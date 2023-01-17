@@ -1,0 +1,82 @@
+\chapter{Introduction to Concurrent Programming}
+\section{Practical Information}
+\subsection{Labs}
+Create a zoom meeting without a password\\
+Put a request on waglys\\
+The demos/labs on fridays at 08:00 is online, all others are physical.\\
+\\
+There's three main labs:
+\begin{enumerate}
+	\item Trainspotting (Java)
+	\item CChat (Erlang)
+	\item A-mazed (Java)
+\end{enumerate}
+
+\subsection{Course overview}
+Three parts:
+\begin{enumerate}
+	\item Classic shared-memory
+	\item Message-parsing
+	\item Parallellizing computation
+\end{enumerate}
+
+\subsection{Examination}
+It's an open-book exam, meaning you can bring:\\
+up to 2 textbooks,\\
+maximum of 4 two-sided A4 sheets (printed or handwritten),\\
+and an English dictionary.
+\pagebreak
+\section{Technical Information}
+\subsection{Motivation}
+Imagine a sequential counter, if you then count twice you'll always end up with 2. Now imagine the same counter implemented concurrently and we run the count function in separate threads, we now have no idea which will be executed first. More importantly we now have no way of checking that they don't run simultaneously, in a worst case they may even read the value before the other thread have saved their value, meaning they overwrite each others answers.
+
+\subsection{Amdahl's Law}
+If we have $n$ processors that can run in parallel, how much speedup can we achieve?
+$$
+	\text{speedup}=\frac{\text{sequential execution time}}{\text{parallel execution time}}
+$$
+$$
+	\text{Maximum speedup}=\frac{1}{(1-p)+\frac{p}{n}}
+$$
+This means that adding more processors running in parallel benefits the program less and less, the more you add.
+
+\subsection{Terminology}
+\subsubsection{Processes}
+A process is an independent unit of execution.
+\begin{itemize}
+	\item Identifier
+	\item Program counter
+	\item Memory space
+\end{itemize}
+
+\subsubsection{Process states}
+The scheduler is the system unit in charge of setting process states:
+\begin{itemize}
+	\item Ready
+	      \subitem Ready to be executed
+	\item Blocked
+	      \subitem Waiting for event before execution
+	\item Running
+	      \subitem Currently running on the CPU
+\end{itemize}
+
+\subsubsection{Threads}
+A lightweight process, independent unit of execution in the same program space
+\begin{itemize}
+	\item Identifier
+	\item Program counter
+	\item Memory
+	      \subitem local memory, each thread has its own
+	      \subitem global memory, shared throughout all threads
+\end{itemize}
+
+\subsubsection{Shared memory vs. message sharing}
+Shared memory communicate by writing to the shared memory space while\\
+Distributed memory communicate by sending messages between each others.
+
+\subsection{Java threads}
+Starts with the start() method, which in turn calls the method run(). If you need to wait for a thread to finish its course, run join().\\
+\\
+There's two different ways of generating threads in Java, either through extending the class with Thread, or by implementing Runnable. More often than not you implement Runnable because you can have an unlimited amount of interfaces but only one superclass.
+
+% Write something about traces here!
