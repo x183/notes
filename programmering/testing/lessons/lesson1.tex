@@ -67,3 +67,83 @@ Frequency of occurence of unexpected behaviour. A ROCOF of $0.02$ means that we 
 
 \subsubsection{Mean Time Between Failures (MTBF)}
 Average time between failures. If we have a system that is used for long sessions, especially where users might only save their data once every few hours or so, it might be important to prevent crashes happening too often.
+\subsection{Reliability Metrics}
+\begin{itemize}
+	\item Availability: $\frac{\text{Uptime}}{\text{Total time observed}}$
+	\item POFOD: $\frac{\text{Failures}}{\text{Requests over period}}$
+	\item ROCOF: $\frac{\text{Failures}}{\text{Time elapsed in target unit}}$
+	\item MTBF: Average time between observed failures.
+	\item MTTR: Average time to recover from failures.
+\end{itemize}
+It may be cheaper to accept some unreliability and pay for failure cost instead of trying to make the system more reliable. This depends on social/political factors.
+
+\section{Performance}
+The ability to meet timing or throughput requirements. This is the driving factor in software design, even though it is often at expense of other quality attributes. All systems have performance requirements, but they are often not specified. Bad performance leads to a decrease in users.
+\subsection{Performance Measurements}
+\begin{itemize}
+	\item Latency
+	      \subitem The time between arrival of stimulus and the systems response to it.
+	\item Response Jitter
+	      \subitem The allowable variation in latency.
+	\item Throughput
+	      \subitem Usually number of transactions per unit time.
+	\item Deadlines in processing
+	\item Number of events not processed
+\end{itemize}
+\subsubsection{Latency}
+Time it takes to complete an interaction, how quickly the system responds to a user. We measure latency probabilistically, e.g. 95\% of requests are completed within 100ms.\\
+\\
+Another type of latency is the turnaround time, the time it takes to complete a larger task, e.g. With daily throughput of 850,000 requests, process should take < 4 hours, including writing to a database.
+
+\subsubsection{Response Jitter}
+Response time is non-deterministic, if we have an average latency of 5 seconds, we might have a latency of 2 minutes at a specific time, response jitter defines how large the maximum latency can be.
+
+\subsubsection{Throughput}
+The workload a given system can handle, usually measured in transactions per unit time. Since a larger throughput can lead to a longer service time, this can conflict with latency requirements.
+
+\subsubsection{Deadlines}
+Some special tasks must take place at a specific time.
+
+\subsubsection{Missed events}
+If our system is busy, we might need to ignore some events. This is usually a problem for real-time systems.
+
+\section{Scalability}
+The ability to process an increasing number of requests. There are two types of scalability:
+\begin{itemize}
+	\item Horizontal scalability
+	      \subitem Adding more resources to the system, e.g. adding more servers to a web server farm.
+	\item Vertical scalability
+	      \subitem Adding more power to a single resource, e.g. adding more RAM to a single server.
+\end{itemize}
+How can we effectively utilize additional resources? This requires that additional resources:
+\begin{itemize}
+	\item Result in performance improvement
+	\item Didn't require undue effort to add
+	\item Did not disrupt operations
+	\item \textbf{Must be designed to scale}
+\end{itemize}
+
+\section{Security}
+Ability to protect data and information from unauthorized access while still providing access to authorized people and systems.\\
+\includegraphics{lessons/images/security.png}\\
+Processes allow owners of resources to control access. Actors are systems or users. Resources are sensitive elements, operations, and data of the system. Policies define legitimate access to resources.
+\subsection{Security Characterization (CIA)}
+Confidentiality, Integrity, and Availability.\\
+Authentication, Nonrepudiation and Authorization are also important.\\
+\subsection{Security Approaches}
+We achieve security by detecting, resisting, reacting, and recovering from attacks. Data needs to be protected, both when in transit or when at rest.\\
+\\
+Security is a process, not a product. Nothing is completely secure or unsecure, and all systems will be compromised.  We need to be able to detect and recover from attacks as well as figure out who attacked.
+\subsection{Assessing Security}
+Measure of system's ability to protect data from unauthorized access while still providing service to authorized users. we need to assess how well system responds to attack. We can respond by e.g. logging, blocking, or shutting down the system.\\
+\\
+There isn't one single metric for measuring security, in some cases what data is more important, in some cases how much data was lost.
+
+\section{Key points}
+Dependability is one of the most improtant software characteristicts. Reliability depends on the pattern of usage of the software, different users will interact differently.\\
+Reliability measured using ROCOF, POFOD, AVAILABILITY, MTBF, MTTR.\\
+AVAIlability is the ability of the system to be available for use.
+Performance is about management of resources in the face of demand to achieve acceptable timing
+Scalability is the ability to “grow” the system to process an increasing number of requests
+Security is the ability to protect data and information from unauthorized access
+Security is not “measured”, but requires defining attacks and actions to prevent or reduce impact of risk, then assessing those actions
