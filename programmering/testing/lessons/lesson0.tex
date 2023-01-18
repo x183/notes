@@ -13,3 +13,112 @@ Flawed software can even hurt users directly, e.g. pacemaker crashing or av maki
 	      \subitem Verification and Validation.
 	\item Exploration of testing and analysis activities of the V and V process
 \end{itemize}
+
+\section{When is software ready for reease?}
+\subsection{The short answers}
+\begin{itemize}
+	\item We can't find any bugs
+	\item When we have finished testing
+	\item When quality is high
+\end{itemize}
+
+\subsection{The long answer}
+We all want high-quality software, but be don't all agree what that means.\\
+\begin{itemize}
+	\item We can't find any bugs
+	      \subitem but we can't find all bugs.
+	\item When we have finished testing
+	      \subitem but we can't test everything.
+	\item When quality is high
+	      \subitem but we don't know what that means.
+\end{itemize}
+We need to define what we mean by quality, and how we can measure it.\\
+\subsubsection{Quality attributes}
+\begin{itemize}
+	\item Performance
+	      \subitem Ability to meet timing requirements
+	\item Security
+	      \subitem Ability to protect information
+	\item Scalability
+	      \subitem Ability to grow the system to process more concurrent requests
+	\item Availability
+	      \subitem Ability to carry out the task whenever needed
+	\item Modifiability
+	      \subitem Ability to enhance the software to meet new requirements or fix bugs
+	\item Testability
+	      \subitem Ability to easily find faults in the software
+	\item Interoperability
+	      \subitem Exchange information with other systems
+	\item Usablility
+	      \subitem Ability to be used by the intended audience and perform required tasks
+	      \subitem How easy it is to learn to use the software
+\end{itemize}
+These can easily conflict with each other, its important to decide what to prioritize and set a threshold of what's good enough.\\
+
+\subsection{When is software ready for release?}
+It's ready for release when it's \textbf{dependable}. This means it needs to be correct, reliable.
+
+\section{Verification and Validation}
+\subsection{Verification}
+The process of checking that a system meets its requirements.\\ \indent
+Are we building the product right?\\
+Verification is an experiment. We perform trials, evaluate the results, and gather information about what and why it happened.
+\subsubsection{Testing}
+An investigation into system quality, it's based on sequences of stimulations and observations. The software version of a lab rat we later dissect to analyze what failed.\\
+
+\subsection{Validation}
+The process of proving that it meets the specifications set by the customer. \\\indent
+Are we building the right product?\\
+Does the product work in the real world? Even if the software does exactly what we set out to do, it might not be what the customer wants.\\
+
+\subsection{Conclusion}
+Verification checks if the software works as intended.\\
+Validation checks that the software is useful. (This is much harder)\\
+\\
+Both are important and complete each other. This class however, focuses largely on verification.
+\begin{itemize}
+	\item Testing is the primary activity of verification.
+\end{itemize}
+\section{Required level of V and V}
+Depends on:
+\begin{itemize}
+	\item Software Purpose
+	      \subitem The more critical, the more important that it works
+	\item User Expectations
+	      \subitem Some users are more forgiving than others
+	\item Marketing environment
+	      \subitem With competing products in a market, it might be more important to release a product quickly than to make it perfect.
+\end{itemize}
+
+\subsection{Basic questions}
+\begin{enumerate}
+	\item When do verification start and end?
+	      \begin{itemize}
+		      \item It should start as soon as the project starts
+		            \subitem we need to know what we're building and how design/technical choices affect our product's quality
+		            \subitem A great starting point is static verification % https://en.wikipedia.org/wiki/Software_verification#Static_verification_(Analysis)
+		      \item It ends when the product is released
+		            \subitem A great way of verifying during the development process is through dynamic verification % https://en.wikipedia.org/wiki/Software_verification#Dynamic_verification_(Test,_experimentation)
+	      \end{itemize}
+	\item How do we obtain an acceptable level of quality at an acceptable cost?
+	\item How do we decide when it's ready to release?
+	\item How can we control quality during the development process?
+\end{enumerate}
+
+\section{Trade offs}
+There's always a trade-off when designing software, ''Better, faster, or cheaper - pick any two''.
+\subsection{Verification Trade-offs}
+%Insert images
+We are interested in proving that a program demonstrates property X
+\begin{itemize}
+	\item Pessimism inaccuracy
+	      \subitem Not guaranteed to program even if X is true
+	\item Optimism inaccuracy
+	      \subitem May be true, even if X is false
+	\item Property Complexity
+	      \subitem if X is too difficult to check, substitute with simpler property Y
+\end{itemize}
+~
+Finding all faults is nearly impossible, instead we need to decide ourselves when we are ready for release, how good is good enough?\\
+\\
+We need to establish criteria for what is good enough, and what is not. One way of doing this is through \textbf{Alpha/Beta testing} where a small group of users gets the chance to use the product in a somewhat controlled environment and reports feedback and failures.\\
