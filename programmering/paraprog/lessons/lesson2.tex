@@ -1,0 +1,16 @@
+\chapter{Models of concurrency and synchronization algorithms}
+\section{Analyzing concurrency}
+We can use state/transition diagrams to model elements of concurrent programs. States in a diagram capture possible program states, and transitions capture possible state changes. The following diagram models a simple program that reads a value from a shared variable, increments it, and writes it back to the variable.
+\subsection{States}
+A state captures the shared and local states of a concurrent program. When state is unambiguous, we simplify a state with only the value.
+\subsection{Transition}
+A transition is the execution leading to a state change.
+\subsection{Program properties}
+Mutual exclusion, Deadlock freedom, Starvation freedom, No race conditions.
+\section{Mutual exclusion with only atomic reads}
+Locks is a data structure used to control which thread has access to some value.\\
+Can we implement lock using only atomic instructions - reading and writing shared variables?\\
+\indent It's possible, but quite tricky. The easiest way is to have some kind of a lock queue of threads waiting for the lock.\\
+\pagebreak
+\section{Peterson's Algorithm}
+A simple way of locking some memory from all but one thread without having to use a lock class.

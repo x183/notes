@@ -1,0 +1,48 @@
+\chapter{Synchronization problems with semaphores}
+\section{The dining philosophers problem}
+If we have a table with five chairs and five philosophers, each of whom has a bowl of rice and a fork. The philosophers switch between thinking and eating, only that when they eat, they need two forks. Using semaphores we can ensure that the philosophers can eat and never end up in a stalemate.
+\subsection{Solution: limit the number of philosophers}
+One way of solving the problem is to only allow a certain number of philosophers at the table, as so the number of forks is always greater than the number of philosophers. This is not a very elegant solution, and it is not always possible to know how many philosophers will be at the table, however it does break the deadlock.
+
+\section{Producer-consumer}
+The producers and consumers exchange items with each others through a shared buffer (shop), both produce/consume these items asynchronously. Since both cannot access the buffer at the same time, how do we ensure that a consumer won't block an empty buffer or a producer won't block a full buffer? Our solution should also:
+\begin{itemize}
+	\item Support an arbitrary number of producers and consumers
+	\item Deadlock freedom
+	\item Starvation freedom
+\end{itemize}
+\subsection{Solution: semaphores}
+Using a lock and a semaphore, we can lock the buffer in a non-breaking way; we begin by locking the semaphore, then the lock, accessing the buffer, followed by unlocking the semaphore and the lock. Locking the semaphore before the lock not only ensures deadlock freedom, but also starvation freedom. The way we ensure starvation freedom is through letting the consumer and producer unlock each other, meaning the consumer has to wait for producer between purchase attempts.
+\section{Barriers}
+A barrier is a way of Synchronizing, where we select a point (the barrier) in the program execution which all threads in a group has to reach before any single thread is allowed through.
+\begin{figure}[H]
+	\label{fig:barrier}
+	\begin{lstlisting}
+		// ------ Header Begin -------
+		int nDone = 0;
+		Lock lock = new Lock();
+		Semaphore open = new Semaphore(0);
+		// ------ Header End ---------
+		public void myFunction(){
+			// Code before barrier
+			lock.lock()
+			nDone = nDone + 1
+			lock.unlock();
+			if(nDone == nThreads)
+			open.up();
+			open.down();
+			open.up();
+			// Code after barrier
+			}
+		\end{lstlisting}
+	\caption{A simple barrier implementation. (non-reusable)}
+\end{figure}
+In Java we can use the release(n) function to do this.
+
+\section{Readers-writers}
+Readers-writers concurrently access shared data, readers can access the data together, however many they may be, as long as no reader is there. A writer however, can only access the data when no other reader or writer is there.
+\subsection{Problem}
+Implement the Board data structure as so \begin{itemize}
+	\item Multiple readers can access the board at the same time.
+	\item Each writer has exclusive access.
+\end{itemize}
