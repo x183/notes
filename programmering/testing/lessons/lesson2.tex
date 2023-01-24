@@ -1,0 +1,104 @@
+\chapter{Quality Scenarios}
+\section{Scenarios}
+A scenario is a description of an interaction between external stuff and the system. It defines:
+\begin{itemize}
+	\item An event that triggers the scenario.
+	\item An interaction initiated by the external stuff.
+	\item What response is required.
+\end{itemize}
+This is similar to use cases or user stories, but examines \textbf{both} quality and functionality.\\
+\\
+We use scenarios to capture a wide range of requirements:\begin{itemize}
+	\item A set of interactions with users to which a system must respond
+	\item Processing in response to timed events
+	\item Peak load situations
+	\item Regulator demands
+	\item Failure response
+	\item Maintainer changes stuff
+	\item Whatever the design is required to handle
+\end{itemize}
+\subsection{Scenario usages}
+Scenarios are used to; provide input to architecture definitions, by helping fleshing out your requirements and finding new ones; Evaluate system architecture, by finding missing or incompatible interfaces; communicating with stakeholders, gives easy to understand examples of what the system can do; driving the testing process by helping prioritizing your testing.
+
+\subsection{Scenario format}
+\subsubsection{Overview}
+A brief description of what the scenario is.
+\subsubsection{External stimulus}
+What initiated the scenario? A user request, a timer, a failure, a maintainer, etc.
+\subsubsection{System state}
+Aspects of the system's internal state that might affect quality, such as does data exist already? is the system under high or low load, and so on.
+\subsubsection{System environment}
+How does the environment around the system look? How does our infrastructure look? Does the system have gigabit ethernet? is the system air gapped?
+\subsubsection{System response}
+How does the system respond to our stimuli? How should the system respond to meet our quality requirements?
+\subsubsection{Response measure}
+How does we judge the quality of the response?
+
+\subsection{Response measure}
+Most quality measurements are non-deterministic. All time-based measures should be probabilistic (95\% of the time the response should be N, 99\% of the time it's M).\\
+\\
+For real-time systems all time measurements should give a worst-case response time. Otherwise you can give an absolute threshold.
+\subsection{What do we do with scenarios?}
+We use them primarily to test and improve our design. It's also a great way of showing to stakeholders what the system can do and how it can be used.\\
+\\
+We also use scenarios for exploratory testing, where humans are used to test the system. We also use them for formal test cases.
+\subsection{What is a good scenario?}
+credible, valuable, specific, precise, comprehensive
+\begin{itemize}
+	\item credible
+	      \subitem it should be a realistic scenario
+	\item valuable
+	      \subitem
+	\item precise
+	\item specific
+	\item comprehensive
+\end{itemize}
+
+\subsection{Effective scenario use}
+Identify a focused set of scenarios that are representative of the system's behavior. Too many scenarios can be a hindrance, no more than 20 scenarios.\\
+\\
+Use distinct scenarios, it's much better to have wildly different scenarios than to have a few scenarios that are very similar.\\
+\\
+Use scenarios early, they are most important in the early phase, later on it can be hard to change the system behaviour after a new set of scenarios.
+
+\subsection{Reliability scenarios}
+The ability to minimize the number of observed failures. These resolve around one function accessed through an interface.
+\subsubsection{Reliability scenario format}
+\begin{itemize}
+	\item Overview
+	      \subitem Highlight the function(s) being used and which context they are used in
+	\item System state
+	      \subitem Data stored or past events may impact our reliability
+	\item Environment state
+	      \subitem Our available resources can change how reliable our system is, an underpowered processor may cause a system to fail.
+	\item External stimulus
+	      \subitem A user or external system performs one or more input actions
+	      \subitem State specific interactions performed
+	      \subitem If relevant, the type of user and how they perceive reliability
+	\item Required response
+	      \subitem The functional response of the system
+	\item Reliability measure
+	      \subitem how should we measure the reliability of the system and how reliable should it be?
+\end{itemize}
+\subsection{Availability scenarios}
+Ability of the system to mask or repair failures such that the outage period does not exceed a required value over a time period. In other words, we look at how the system responds to a failure, how long it takes, and what it does to return to normal operation.\\
+\\
+We need to distinguish between failures and the software's perception of failure, e.g. when the network goes down, the system doesn't count that as a failure until it needs to access the network, meaning we have time to recover.\\
+\\
+Scenarios tends to deal with; failure of internal components or external systems, reconfigure of the physical system, or maintenance/reconfigure of the software.\\
+\\
+\subsubsection{Availability scenario format}
+\begin{itemize}
+	\item Overview
+	      \subitem Highlight the function(s) being used and which context they are used in.
+	\item System/environment state
+	\item External stimuli
+	      \subitem stimuli is omissions, crashes, wrongful timings, incorrect responses and so on.
+	\item Required response
+	      \subitem Failure needs to be detected and isolated before we can recover.
+	\item Response measure
+	      \subitem Can specify an availability percentage
+	      \subitem Can specify a time to detect/repair or when it needs to be available and for how long
+\end{itemize}
+\subsection{Availability vs Reliability}
+Reliability is about how it operates normally and how often it fails. Availability is about how it operates when it fails and how we avoid hard crashes and downtime.
