@@ -1,0 +1,69 @@
+\chapter{Erlang introduction}
+\section{What is Erlang?}
+\subsection{Erlang history}
+Erlang was first created in the mid 1980's at Ericsson. In 1998, they decide to ban the internal use of erlang, making it open-source. It is still used though in communication apps such as whatsapp.
+\subsection{What is a functional language?}
+Functional languages are based on elements different from imperative languages. In imperative programming you have states, such as variables, while in functional programming ,you have data, and side effectless functions.  All you have is data, no variables, no side effects, you send in something and you always get the same result.
+\section{The erlang shell}
+\begin{lstlisting}[language=erlang]
+	$ erl
+	1> 1+3.	% This is a comment
+	4
+	2> c(power). % Compile the module power (file power.erl)
+	{ok,power}
+	3> power:power(2,3). % Call the function power in the module power
+	8
+\end{lstlisting}
+\section{Types}
+\subsection{Primitive types}
+\begin{itemize}
+	\item Integer
+	      \subitem These are of an arbitrary size and therefore don't overflow
+	\item Atoms
+	      \subitem Roughly equivalent to identifiers
+	\item Floats
+	\item References
+	\item Binaries
+	\item Pids
+	      \subitem process identifiers
+	\item Ports
+	      \subitem For communication
+	\item Funs
+	      \subitem function closures
+\end{itemize}
+\subsubsection{Atoms}
+Atoms are used to denote distinguished values, they should always start with a lowercase letter. They are used to denote constants, such as true and false. They are also used to denote functions, such as the function name in the erlang shell.\\
+\\
+There are no booleans, instead we use the atoms true and false as booleans out of convention.
+\subsection{Compound types}
+\begin{itemize}
+	\item Tuples
+	\item Lists
+	\item Maps
+	\item Strings
+	\item Records
+\end{itemize}
+\subsubsection{Tuples}
+Tuples denote  an ordered sequence with a fixed but arbitrary number of elements of arbitrary types.
+\subsubsection{Lists}
+Lists are a sequence of elements of arbitrary type with a variable size.
+\subsubsection{Strings}
+A sequence of characters enclosed between double quotation marks. Basically just a list of characters.
+\subsubsection{Order of types}
+number < atom < reference < fun < port < pid < tuple < map < list
+
+\section{Variables}
+Variables are variables in the mathematical sense, they are identifiers that can be bound to values (Similar to constants in imperative programming).\\
+
+\section{Recurrsion - Example}
+\begin{lstlisting}[language=erlang]
+	% A slow version of the factorial function using recursion
+	Factorial(N) when N = 1 -> 1;
+	Factorial(N) -> N * Factorial(N-1).
+
+	% A faster version of the function above using tail recursion
+	Factorial(N) ->
+	 FacHelper(N,i) when N = 1 -> i;
+	 FacHelper(N,i) -> FacHelper(N-1,i*N).
+	 FacHelper(N,1).
+\end{lstlisting}

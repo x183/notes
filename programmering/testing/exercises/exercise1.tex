@@ -1,0 +1,179 @@
+\chapter{Quality Scenario Exercise}
+\section{Exercise description}
+You have been asked to develop a new automated parking system at the GOT airport.\\
+\\
+In this new system, a user can simply insert their credit or debit card into the card reader at the ramp entrance. This will record the time they entered airport parking. They then can use the same credit or debit card to pay at an exit lane. The system should be fully automated; there is no waiting in line for a cashier. The system should also support ticketed parking: where the user receives a ticket and pays either by credit card or cash on exiting.\\
+\\
+The system needs to interact with a number of entities and systems, including:
+\begin{itemize}
+	\item Customers parking in the ramp
+	\item Airport police and emergency responders
+	\item Ramp managers
+	\item External systems for validating credit card details and submitting payments
+	\item The airport’s accounting system
+	\item External physical gate systems with basic controllers (raise / lower)
+	\item External physical systems for signage
+	\item An existing personnel system for staffing exit kiosks
+\end{itemize}
+The system will be deployed within the physical architecture of the airport parking garage,
+incorporating:
+\begin{itemize}[*]
+	\item  Entrance Kiosks
+	      \subitem  Card dispensers
+	      \subitem  Credit card reader
+	      \subitem  Card reader for contract parking
+	      \subitem  Signage: {OPEN / CLOSED}
+	      \subitem  Entry gate
+	\item  Parking Entrance
+	      \subitem  Signage {FULL / NOT FULL}
+	\item  Exit Kiosks
+	      \subitem  Signage: {OPEN / CLOSED}
+	      \subitem  Staffed kiosks
+	      \subitem  Automated kiosks
+	      \subitem  Exit gate
+	\item  Security cameras
+	\item  Hardware for Parking System
+	      \subitem  Dual server w/failover (can switch in event of failure)
+	      \subitem  Clustered DB
+	      \subitem  Storage area network
+\end{itemize}
+You will describe scenarios using the following template:
+\begin{itemize}
+	\item  Overview
+	      \subitem  Brief description of what the scenario illustrates, provides important context.
+	\item  System State
+	      \subitem  Aspects of the system state that affect quality (i.e., information stored in the
+	      system, number of concurrent logged-in users, previous failures that may
+	      influence execution)
+	\item  Environment State
+	      \subitem  Significant observations about the environment that the system is running in that
+	      could influence the quality of the system
+	\item  External Stimulus
+	      \subitem  Input events or environmental factors that initiate the scenario. (i.e., infrastructure
+	      changes or failures, security attacks, etc.)
+	      \subitem  Name both the actor who initiated the scenario and the action performed.
+	\item  Required System Response
+	      \subitem  How should the system respond (from a functional point of view)? (i.e., how
+	      should it handle a defined increase in requests?)
+	      \subitem  Focus on actions that relate to the quality attribute of interest.
+	\item  Response Measure
+	      \subitem  How success is defined and measured, along with a threshold that must be
+	      defined for success.
+	      \subitem  Based on the quality attribute of interest.
+\end{itemize}
+Based on the above template, create the following:
+\begin{enumerate}
+	\item Create a reliability scenario (using any of the response measures EXCEPT for availability).
+	\item Create an availability scenario.
+	\item Create a performance scenario.
+	\item Create a scalability scenario.
+	\item Create a security scenario
+\end{enumerate}
+\pagebreak
+\section{Scenario 1 (Avaliability? ish)}
+\begin{itemize}
+	\item  Overview
+	      \subitem  The card reader loses its connection and the system is unable to charge the user. The user therefore has to try and pay multiple times.
+	\item  System State
+	      \subitem  System is operating normally.
+	      influence execution)
+	\item  Environment State
+	      \subitem  The system is under a normal load of about 150 passthroughs per hour.
+	\item  External Stimulus
+	      \subitem  The system fails to connect to its external payment system.
+	\item  Required System Response
+	      \subitem If the system fails, prompt the user to try, and try again.
+	\item  Response Measure
+	      \subitem The system is allowed to fail no more than 1 time per user, and a maximum of 5 times per hour.
+\end{itemize}
+\pagebreak
+
+
+\section{Scenario 2 (Availability)}
+\begin{itemize}
+	\item  Overview
+	      \subitem Parts of the clustered database fails, thanks to malformed data.
+	      \subitem Rats have chewed through the cables, causing the system to fail periodically.
+	\item  System State
+	      \subitem The system is operating normally.
+	\item  Environment State
+	      \subitem The system is under a normal load of about 150 passthroughs per hour.
+	      \subitem Garage is not empty or full. All physical equipment is working.
+	\item  External Stimulus
+	      \subitem the broken cable leads to a deformation of system data.
+	\item  Required System Response
+	      \subitem When the system fails, a backup system should be able to take over and continue to operate without the user noticing.
+	\item  Response Measure
+	      \subitem The system should have an availability of 98\%.
+	      \subitem Each system failure needs to be at least 30 minutes apart as so to give enough time for our technicians to recover the system.
+\end{itemize}
+
+\pagebreak
+\section{Scenario 3 (Performance)}
+\begin{itemize}
+	\item  Overview
+	      \subitem The system is unable to handle the load of the users.
+	\item  System State
+	      \subitem The system is operating normally.
+	\item  Environment State
+	      \subitem The system is under a normal load of about 150 passthroughs per hour.
+	      \subitem Garage is not empty or full. All physical equipment is working.
+	\item  External Stimulus
+	      \subitem The system is unable to handle the load of the users.
+	\item  Required System Response
+	      \subitem The system should be able to handle 200 passthroughs per hour.
+	\item  Response Measure
+	      \subitem Each passthrough should take no more than 30 seconds.
+	      \subitem The system should be able to handle 200 passthroughs per hour.
+\end{itemize}
+\pagebreak
+
+\section{Scenario 4 (Scalability)}
+\begin{itemize}
+	\item  Overview
+	      \subitem Thanks to an increase in load after the holidays, management has decided to open another set of kiosks.
+	      \subitem Previously, the system consisted of 3 entrance, and 3 exit-kiosks, with another entrance and exit kiosk being added.
+	\item  Environment State
+	      \subitem Each of the open kiosks is able to handle 50 passthroughs per hour but.
+	\item  External Stimulus
+	      \subitem The system is under a constant high load of about 200.
+	\item  Required System Response
+	      \subitem The system should be able to handle 200 passthroughs per hour meaning each added kiosk should handle 50 passthroughs per hour.
+	\item  Response Measure
+	      \subitem Each passthrough should still take 30 seconds.
+	      \subitem The system should be able to handle the adding of more kiosks without having to take it down.
+	      \subitem The system should now be able to handle 50 extra passthroughs per hour.
+\end{itemize}
+\pagebreak
+
+\section{Scenario 5 (Security)}
+\begin{itemize}
+	\item Overview
+	      \subitem A hacker has gained access to the system and is able to increase each cars parking time.
+	\item System state
+	      \subitem The system is operating normally.
+	\item External stimulus
+	      \subitem A malicious USB stick has been attached to our server.
+	\item Required system response
+	      \subitem Even if the system is compromised, the system should still be able to handle the load of the users, and no personal information should be leaked.
+	      \subitem Our logs should clearly state which data has been accessed/modified and where it might have been sent to.
+	\item Response measure
+	      \subitem We should contact the users affected, and compensate them.
+	      \subitem We should use the logs to figure out where it went wrong and fix the hole.
+\end{itemize}
+
+\section{Scenario 6 (Reliability)}
+\begin{itemize}
+	\item Overview
+	      \subitem A car tries to enter
+	\item System state
+	      \subitem The system is operating normally.
+	\item Environment state
+	      \subitem Everything is normal
+	\item External stimulus
+	      \subitem The car wants to enter but cannot
+	\item Required system response
+	      \subitem The car should pass through the entrance kiosk
+	\item Response measure
+	      \subitem The ROCOF of the system should be less than 0.005
+\end{itemize}
