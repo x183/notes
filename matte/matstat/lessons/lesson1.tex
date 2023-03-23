@@ -1,1 +1,31 @@
 \chapter{Diskreta stokastiska variabler}
+
+\section{Föregående föreläsningen}
+Bayes sats
+$P(A\|B)=\frac{P(A\cap B)}{P(B)}=\frac{P(B\|A)P(A)}{P(B)}$
+\\
+$\leftarrow P(A\|B)=P(A)\Leftrightarrow P(A\cap B)=P(A)P(B)$\\
+$\frac{P(A\cap B)}{P(B)}$
+
+\section{Stokastiska variabler}
+Binomialfördelade och Geometriskt fördelade är de som är viktigast idag.\\
+\subsection{Vad är en stokastisk variabel?}
+En stokastisk variabel $X$ är en funktion som för varje utfall i ett slumpmässigt försök antar ett reellt tal, dvs. $X:\Omega\rightarrow\mathbb{R}$
+\\
+\subsubsection{Diskreta stokastiska variabler}
+En stokastisk variabel som antar ett ändligt antal/uppräkneligt antal värden
+\subsubsection{Kontinuerlig stokastisk variabel}
+Kan istället anta värden i ett intervall.
+\subsection{sannolikhetsfunktion}
+Kan vara:
+\begin{itemize}
+\item Antalet ögon vid tärningskast
+\item Antalet gånger vi måste kasta ett mynt innan vi får krona
+\end{itemize}
+
+$$f(x)=P(X =x),x\in\mathbb{R}$$
+En funktiin är en sannolikhetsfunktion om och endast om\\
+$f(x)\geq0$
+\\
+$\sum_{x\in X(\Omega)}f(x)=1$\\
+$F(x)=P(X\leq x)$ kallas fördelningsfunktionen till X.
