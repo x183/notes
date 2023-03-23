@@ -1,0 +1,28 @@
+\chapter{Grundläggande sannolikhetsteori}
+
+\section{Kombinatorik}
+För att kunna räkna ut sannolikheten för en händelse behöver vi kunna räkna ut antalet möjliga utfall. Detta görs med hjälp av kombinatorik.\\
+
+\subsection{Multiplikationsprincipen}
+Antag ett slumpexperiment i $k$ steg. Låt $n_j$ vara antalet möjliga utfall i $j\in\{1,\dots,k\}$-te steget. Då ges antalet utfall för hela experimentet av:
+$$
+	\Pi^k_{j=1}n_j=n_1\cdot n_2\cdot\ldots\cdot n_k
+$$
+\begin{exempel}{Exempel}
+	På en dans var 8 herrar och 9 damer bjudna. Om herrarna bara dansar med damerna och vise versa,\\ hur många olika danspar kan det bli?
+\end{exempel}
+
+\subsection{Permutation}
+Hur många tal kan vi bilda med siffrorna ${1,2,3}$ utan att repetera en siffra?\\
+Enligt multiplikationsprincipen finns $3\cdot2\cdot1=6$ möjliga kombinationer:
+$$
+	(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)
+$$
+
+För att få fram antalet permutationer av $n\in\mathbb{N}$ element kan vi använda följande:\\
+När vi väljer första objektet har vi $n$st val, för andra har vi $(n-1)$st val och så vidare. Antalet ordningar är då:
+$$
+	n(n-1)(n-2)\cdot\ldots\cdot3\cdot2\cdot1=\prod^n_{i=1}=n!
+$$
+$n!$ kallas $n-$fakultet och är ett sätt att räkna antalet permutationer av $n$ element.\\
+$0-$fakultet definieras som $0!=1$.

@@ -1,0 +1,22 @@
+%-------------------------------------------------
+% Colors:
+%-------------------------------------------------
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+%-------------------------------------------------
+% List of custom commands:
+%-------------------------------------------------
+%
+%\newcommand{\exempel}[2]{
+%	{\centering \tcbox[colback=blue!10!white,title={\Large Exempel: #1},colframe=blue!75!black]{
+%				\begin{figure}[H]
+%					#2
+%				\end{figure}
+%			}}
+%}
+%
+\newtcolorbox{exempel}[1]{center title,enhanced,colback=blue!10!white,title={\Large Exempel: #1},colframe=blue!75!black}
+%\newcommand{\UserStory}[4]{\begin{boxC}\begin{figure}[H]\parbox{\textwidth}{\textbf{\Large User story:}~\\\textbf{Story Identifier:} #1\\\textbf{Story Name:} #2\\\textbf{Description:}~\\#3\\\textbf{Functional:}#4}\caption{User story #1}\label{fig:story_#1}\end{figure}\end{boxC}}
