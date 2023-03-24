@@ -26,3 +26,47 @@ $$
 $$
 $n!$ kallas $n-$fakultet och är ett sätt att räkna antalet permutationer av $n$ element.\\
 $0-$fakultet definieras som $0!=1$.
+
+\subsection{Laplace experiment}
+Antag att vi har ett slumpmässigt försök med ändligt många möjliga utfall, där varje utfall är lika troligt, då säger man att sannolikheten är likformigt fördelad. Sannolikheten för en händelse $A$ är då:
+$$
+	P(A)=\frac{\|A\|}{\|S\|}
+$$
+Där $\|M\|$ betecknar antalet element i mängden $M$.
+
+\section{Räkneregler}
+\begin{itemize}
+	\item \textbf{Komplement}: Komplementhändelsen till $A$ definieras som $A'=\text{''A inträffar inte''}$
+	\item \textbf{Additivitet}: Om $A$ och $B$ är disjunkta gäller $\mathbb{P}(A\cup B) =\mathbb{P}(A)+\mathbb{P}(B)$
+	\item \textbf{Additionssatsen}: För godtyckliga händelser $A,B$ gäller $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$
+\end{itemize}
+
+\section{Betingad sannolikhet}
+\begin{exempel}{Maskiner}
+	I en tillverkningsprocess för en viss produkt kontrolleras kvaliteten, och en produkt klassificeras för enkelhets skull som antingen duglig eller defekt. Efter ett maskinbyte har vi tillgång till data om antalet defekta såväl innan som efter bytet.
+	$$
+		\begin{matrix}
+			~                   & \text{Duglig} & \text{Defekt} & \vline & \text{Totalt} \\
+			\text{Äldre maskin} & 170           & 10            & \vline & 180           \\
+			\text{Ny maskin}    & 115           & 5             & \vline & 120           \\
+			\hline
+			\text{Totalt}       & 285           & 15            & \vline & 300
+		\end{matrix}
+	$$
+	$A-$''Slumpvis vald produkt är duglig''.\\
+	$B-$''Slumpvis vald produkt är tillverkad med äldre maskin''.\\
+	$C-$''Slumpvis vald produkt är duglig, givet tillverkad med äldre maskin''.\\
+	$\mathbb{P}(A)=\frac{285}{300}$,\\ $\mathbb{P}(B)\frac{180}{300}$,\\ $\mathbb{P}(C)=\mathbb{P}(A\vline B)=\frac{170}{180}=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$
+\end{exempel}
+För två händelser $A$ och $B$ där $\mathbb{P}(B)>0$ definieras den betingade snnolikheten för $A$, givet att händelsen $B$ inträffar genom:$$
+	\mathbb{P}(A\|B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
+$$
+\section{Multiplikationsregel och Bayes sats}
+\subsection{Multiplikationsregel}
+För två händelser $A$,$B$ gäller$$
+	\mathbb{P}(A\cap B)=\mathbb{P}(A\|B)\mathbb{P}(B)=\mathbb{P}(B\|A)\mathbb{P}(A)
+$$
+\subsection{Bayes sats}
+$$
+	\mathbb{P}(A\|B)=\frac{\mathbb{P}(B\|A)\mathbb{P}(A)}{\mathbb{P}(B)}
+$$
