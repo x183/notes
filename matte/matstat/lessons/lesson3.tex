@@ -1,0 +1,79 @@
+\chapter{Fler användbara fördelningar}
+\section{Negativ binomialfördelning}
+Negativ binomialfördelning beskriver hur många gånger vi behöver upprepa ett försök tills $r$ försök har lyckats.
+Antag att försöken är identiska ,oberoende av varandra, och lyckas med sannolikhet $p$, då har $X$ en negativ binomialfördelning med parametrarna $r$ och $p$, och motsvarande sannolikhetsfunktion ges av $$
+	f(k)=P(X=k))\left(^{k-1}_{r-1}\right)p^r(1-p)^{k-r}\text{ , }k\geq r
+$$
+$X\sim NB(r,p)$ Då kan vi skriva $X=X_1+X_2+\ldots+X_r$ där $X_1,\ldots,X_r\sim\text{geom}(p)$
+\begin{exempel}{Exempel}
+	Vad är sannolikheten att vi får en sexa först på det tredje kastet?\\
+	\textbf{Lösning:}\\
+	$$\text{geom}(\frac{1}{6})$$
+\end{exempel}
+
+\section{Hypergeometrisk fördelning}
+Antag att vi har $N$ objekt, varav $r$ har en egenskap vi tycker om. Vi väljer $n$ objekt slumpmässigt och låter $X$ vara antalet av de valda som har egenskapen. Då har $X$ en hypergeometrisk fördelning med parametrarna $N$, $r$ och $n$. Sannolikhetsfunktionen ges av $$
+	f(k)=P(X=k)=\frac{\left(^{r}_{k}\right)\left(^{N-r}_{n-k}\right)}{\left(^{N}_{n}\right)}
+$$
+\subsection{Väntevärdet och variansen}
+\subsubsection{Väntevärde}
+$$\mathbb{E}[X]=\frac{nr}{N}$$
+
+\subsubsection{Varians}
+$$
+	\text{Var}(X)=\frac{nr(N-n)(N-r)}{N^2(N-1)}
+$$
+
+\begin{exempel}{Exempel: Covidsjuka}
+	Antag att man har testat en grupp med 20 personer för SARS-Cov-2, och att 5 av dem hade ett positivt testresultat. Antag att 6 slumpvis valda personer ur gruppen träffas på ett kafe, och låt $X$ vara antalet bland dem har viruset.\begin{enumerate}
+		\item Bestäm sannolikhetsfunktionen till $X$
+		\item Beräkna väntevärde och varians till $X$
+		\item Beräkna sannolikheten att minst en av de som träffas har viruset
+	\end{enumerate}
+	\textbf{Lösning:}\\
+	$$
+		\text{Sannolikhetsfunktion: }P(X=k)=\frac{(^5_k)(^{15}_{6-k})}{(^{20}_{6})}
+	$$$$
+		\begin{cases}
+			\text{Väntevärde: }\mathbb{E}[X]=\frac{5\cdot6}{20}=1.5 \\
+			\text{Varians: }\text{Var}(X)=\frac{5\cdot6\cdot15\cdot14}{20^2\cdot19}=\frac{2^2\cdot7}{4\cdot19}\approx\frac{3}{4}
+		\end{cases}
+	$$$$
+		P(X\geq1)=1-P(X-0)=\frac{(^5_0)(^{15}_6)}{(^{20}_6)}
+	$$
+\end{exempel}
+
+\section{Poissonfördelning}
+Poissonfördelning räknar antalet händelser $X$ som inträffar under ett tidsintervall oberoende av varandra, om det förväntade antalet händelser $\lambda>0$ är känt. Är $n$ stort och $np=\lambda$, så borde vi ha $X\approx\text{bin}(n,p)$\\
+Sannolikhetsfunktionen för enn poissonfördelning ges av:$$
+	f(x)=\frac{\lambda^ke^{-\lambda}}{k!}\text{ , }k\in\{1,2,\ldots\}
+$$$\lambda$(intensiteten för $X$) beskriver antalet händelser per tidsenhet. Vi skriver $X\sim\text{Poisson}(\lambda)$
+
+\section{Exponentialfördelning}
+Antag att antalet händelser i intervallet $[0,1]$ är $X\sim\text{Poisson}(\lambda)$. $T$ är tiden vi väntar innan någonting händer. Låt $t>0$ och låt $X_t$ vara antalet händelser mellan $[0,t]$. Då är $X_t\sim\text{Poisson}(\lambda t)$. Vi får $$
+	F_T(t)=P(T\leq t)=P(X_t>0)=1-P(X_t=0)=1-\frac{e^{-\lambda t}\lambda^0}{0!}=1-e^{-\lambda t}
+$$
+\subsection{Fördelningsfunktion och täthetsfunktion}
+$F(t)=P(T\leq t)=-e^{-\lambda t}$ och $f(t)=F'(t)=\lambda e^{-\lambda t}$ , $t>0$
+\subsection{Väntevärde, varians och momentgenererade funktioner}
+$$
+	\begin{cases}
+		\text{Väntevärde: }\mathbb{E}[T]=\frac{1}{\lambda} \\
+		\text{Varians: }\text{Var}(T)=\frac{1}{\lambda^2}  \\
+		\text{Momentgenererade funktionen: } m_T(t)=\frac{1}{1-t/\lambda}
+	\end{cases}
+$$
+\subsection{Minneslöshet}
+$$
+	P(T\leq s+t | X\geq t)=\frac{e^{-\lambda(s+t)}}{e^{-\lambda t}}=P(T\geq s)
+$$
+
+\section{$\chi^2$-fördelning}
+$Y=X^2_1+\ldots+X^2_n\sim\chi^2_n$ har en $\chi^2$-fördelning med $n$ frihetsgrader, och vi skriver $Y\sim\chi^2_n$
+\section{Gamma-fördelning}
+$$\Gamma(\alpha)=\int_0^\infty z^{\alpha-1}e^{-z}dz$$
+Man kan kontrollera att \begin{itemize}
+	\item $\Gamma(1)=1$
+	\item $\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)$
+	\item $\Gamma(n)=(n-1)!$
+\end{itemize}

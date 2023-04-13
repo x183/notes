@@ -1,0 +1,80 @@
+\chapter{Kontinuerliga stokastiska variabler}
+\section{Täthetsfunktion}
+Om $f:\mathbb{r}\rightarrow\mathbb{R}_+$ är en funktion s.a.
+$$
+	P(a\leq X \leq b)=\int_a^bf(x)dx
+$$
+Så kallas $f$ för täthetsfunktionen till $X$.
+\subsection{Konsekvenser}
+Om $a\in\mathbb{R}$ så är $$
+	P(X=a)=P(a\leq X\leq a)=\int_a^af(x)dx=0
+$$
+om då $a\leq b$
+$$
+	P(a\leq X\leq b)=P(a\leq X\leq b) =P(a<X\leq b)=P(a<X<b)
+$$
+\begin{exempel}{Exempel: Täthetsfunktion}
+	Låt $X$ vara en kontinuerlig stokastisk variabel med täthetsfunktion\\
+	$f(x)=\left\lbrace^{3x^2\text{ om }0<x<1}_{0\text{ ~ ~annars}}\right.$\\
+	Bestäm $F(x)$ och beräkna $P(0.1\leq X\leq 0.8)$\\
+	\textbf{Lösning:}\\
+	$F(x)=\int_{-\infty}^xf(x)dx=\begin{cases}
+			0 \text{ om }x<0 \\
+			1\text{ om }x>1  \\
+			\int_0^x3x^2dx\text{ om }x\in [0,1]
+		\end{cases}$
+\end{exempel}
+\begin{exempel}{Exempel: Täthetsfunktion 2}
+	Visa att om $a<b$ så är funktionen $
+		f(x)=\begin{cases}
+			1/(b-a)\text{ om }a<x<b \\
+			0\text{ annars}
+		\end{cases}
+	$en täthetsfunktion.
+\end{exempel}
+\section{Likformig fördelning}
+Om en slumpvariabel $X$ har täthetsfunktion $$
+	f(x)=\begin{cases}
+		1/(b-a)\text{ om }a<x<b \\
+		0\text{ annars}
+	\end{cases}
+$$
+Så sägs $X$ vara likformigt fördelad på intervallet $(a,b)$. Vi skriver $X\sim \text{unif}(a,b)$.
+\section{Väntevärde, varians och standardavvikelse}
+Låt $X$ vara en kontinuerlig stokastisk variabel med täthetsfunktion $f(x)$. Då är
+\subsection{Väntevärde}
+Väntevärdet av $X$ ges av$$
+	\mu=\mathbb{E}[X]=\int_\mathbb{R}x\cdot f(x)dx
+$$
+Om $h:\mathbb{R}\rightarrow\mathbb{R}$ så definieras
+$$
+	\mathbb{E}[f(X)]=\int_\mathbb{R}h(x)\cdot f(x)dx
+$$
+\subsection{Varians och väntevärde}
+Variansen och väntevärdet definieras precis som för diskreta stokastiska variabler.
+$$
+	\text{Var}(X)=\mathbb{E}[(X-\mu)^2]=\mathbb{E}[X^2]-\mathbb{E}[X]^2
+$$och $\sigma=\sqrt{\text{Var}(X)}$
+
+\section{Normalfördelning}
+Om $\mu\in\mathbb{R}$ och $\sigma>0$ och en kontinuerlig stokastisk variabel $X$ har täthetsfunktion $$
+	f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+Så är $X$ normalfördelad med parametrar $\mu$ och $\sigma$. Vi skriver $X\sim \text{N}(\mu,\sigma^2)$.
+\subsection{Väntevärde och varians}
+$$
+	\mathbb{E}[X]=\mu
+$$$$
+	\text{Var}(X)=\sigma^2
+$$
+\subsection{Standard normalfördelning}
+Om $Z\sim N(0,1)$ så sägs $Z$ ha en \textit{standard normalfördelning}. För en standard normalfördelning gäller $$
+	f(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+$$
+Man skriver ofta $Z$ istället för $X$ om $>\sim N(0,1)$ för att man ofta hanterar en annan stokastisk variabel $X\sim N(\mu,\sigma)$ samtidigt.
+\subsection{Sannolikhetsfunktion}
+Det finns ingen sluten form för sannolikhetsfunktionen $F$ till $Z\sim N(0,1)$. Istället hittar man värden för $F(x)$ i en tabell (se sid. 697-698). Ofta skrivs $\Phi(x)$ istället för $F(x)$ när $X\sim N(0,1)$.
+\section{Transformationer av kontinuerliga stokastiska variabler}
+$$
+	\frac{\left(^n_k\right)}{n^2}^i
+$$
