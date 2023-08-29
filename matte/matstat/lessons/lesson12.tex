@@ -1,0 +1,74 @@
+\chapter{Genererande funktioner}
+
+\section{Antal heltalslösningar}
+Hur många lösningar har ekvationen $$
+	x_1+x_2+x_3=5
+$$ om \begin{itemize}
+	\item $x_1\leq 1$
+	\item $1\leq x_2\leq3$
+	\item $x_3\geq1$ är udda
+\end{itemize}
+
+\subsubsection{Lösningar}
+$$
+	\begin{cases}
+		x_1=1,x_2=3, x_3=1 \\
+		x_1=1,x_2=1,x_3=3  \\
+		x_1=0,x_2=2,x_3=3
+	\end{cases}
+$$$$
+	x^1x^3x^1+x^1x^1x 3+x^0x^2x^3=3x^5
+$$
+$p(x)=\sum_{j=0}^\infty a_jx^j$ där $a_j$ är antalet lösningar till $$
+	\begin{cases}
+		x_1+x_2+x_3=j \\
+		x_1\leq1      \\
+		1\leq x_2\leq3
+		x_3\text{ udda}
+	\end{cases}
+$$
+$$
+	p(x)=(x^0+x^1)(x^1+x^2+x^3)(x^1+x^3+x^5+x^7+\ldots)
+$$
+Om vi utvidgar $p(x)$ och räknar hur många ggr vi fr termer $x^{i+j+k}$ med $i+j+k=5$ så borde det vara svaret på frågan. I vårt fall får vi polynomet $$
+	x^2+2x ³+3x^4+3x^5+3x^6+3x^7+O(x^8)
+$$dvs. svaret är 3.
+\subsection {Exempel}
+Hur många lösningar har ekvationen $$
+	x_1+2x_2=8 \text{ givet att }x_1\geq1 \text{ och }x_2\leq 2
+$$$$
+	\begin{cases}
+		2x_2=x_3   \\
+		x_1+2x_2=j \\
+		x_1\geq1   \\
+		x_2\leq2   \\
+		x_3\leq4 \text{ och är jämnt}
+	\end{cases}
+$$
+Lösning lämnas som en tankenöt till läsaren.\\
+\section{Exponentiella genererande funktioner}
+För en talföljd $(a_k)$ definierar vi den exponentiella genererande funktionen $$
+	g(x)=\sum_{k=1}^\infty \frac{a_kx^k}{k!}
+$$
+\subsection{Exempel}
+Vi har ett alfabet $a,b,c,d$ och vill bilda ord med 4 bokstäver. Hur många kan vi bilda om vi vill ha
+\begin{itemize}
+	\item Jämnt antal a
+	\item högst 3 b
+	\item Udda antal c
+\end{itemize}
+$$
+	(x^0+x^2+x^4)(x^0+x^1+x^2+x^3)(x^1+x^3)(x^0+x^1+x^2+x^3+x^4)
+$$
+Exempelvis om vi testar hur många sätt bokstäverna aabc kan bilda ord får vi $$
+	\frac{4!}{2!1!1!0!}=\frac{24}{2}=12
+$$
+vi kan lägga in $4!$ i ekvationen och får $$
+	4!(x^0+x^2+x^4)(x^0+x^1+x^2+x^3)(x^1+x^3)(x^0+x^1+x^2+x^3+x^4)
+$$Vi lägger även till vad vi dividerar med för varje för att få jut något$$
+	g(x)=4!(x^0/0!+x^2/2!+x^4/4!)(x^0/0!+x^1/1!+x^2/2!+x^3/3!)(x^1/1!+x^3/3!)(x^0/0!+x^1/1!+x^2/2!+x^3/3!+x^4/4!)
+$$$$
+	g(x)=\sum a_nx^n
+$$$$
+	g(x)[x^4]=a_4=\text{Antalet ord med fyra bokstäver}
+$$

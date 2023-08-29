@@ -1,0 +1,19 @@
+\chapter{Flerdimensionella stokastiska variabler}
+\section{Diskreta tvådimensionella stokastiska variabler}
+\begin{exempel}{Diskret}
+	Låt $X$ vara mängden regn, och $Y$ antalet studenter (av totalt 4) som tar med ett paraply. Anta att alla sannolikheter $f_{XY}(x,y)$ ges av tabellen:
+	% insert image here
+	Då blir $$
+		F(1,2)=P(X\leq1,Y\leq2)=
+	$$$$
+		=P(X=0,Y=0)+P(X=0,Y=1)+P(X=0,Y=2)+P(X=1,Y=0)+
+	$$$$
+		P(X=1,Y=1)+P(X=1,Y=2)=0.04+0.1+0+0.2+0.05+0.04=0.43
+	$$
+\end{exempel}
+$f(x,y)=c(1+x+e^{-y})$\indent $y\in[0,1]$
+$$
+	1=\int\int f(x,y)dxdy=\int_0^\infty(\int_0^1c(1+x+e^{-y})dx)dy=\int_0^\infty[c(x+\frac{x^2}{2}+xe^{-y})]^1_0dy=
+$$$$
+	=\int_0^\infty c(1+\frac{1}{2}+e^{-y})dy=c(\frac{3}{2}y-e^{-y})=c(\frac{3}{2}-e^{-1}-(0-e^0))=c(\frac{3}{2}-e^{-1}+1)\Leftrightarrow c=\frac{1}{\frac{3}{2}-e^{-1}+1}
+$$

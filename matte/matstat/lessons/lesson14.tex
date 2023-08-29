@@ -1,0 +1,59 @@
+\chapter{Regression}
+\section{Linjär regression}
+Beskriver en stokastisk motsvarighet till ett linjärt samband mellan 2 variabler, ex. temperatur av havsvatten antas vara linjär funktion av djupet.
+Skrivs $$
+	y_1=B_0+B_1x_i+\varepsilon_i,\;\begin{cases}
+		\varepsilon_i\sim N(0,\sigma^2) \\
+		\text{oberoende}
+	\end{cases}
+$$
+\subsection{Linjär algebra}
+$$
+	X=\begin{bmatrix}
+		1      & x_1    \\
+		1      & x_2    \\
+		\vdots & \vdots \\
+		1      & x_n
+	\end{bmatrix},\;B=\begin{bmatrix}
+		\beta_1 \\
+		\beta_2
+	\end{bmatrix},\;y=\begin{bmatrix}
+		y_1    \\
+		y_2    \\
+		\vdots \\
+		y_n
+	\end{bmatrix}
+$$$$
+	L(\beta_0,\beta_1)=||y-X\beta||^2_2
+$$$$
+	\begin{bmatrix}
+		\hat\beta_0 \\
+		\hat\beta_1
+	\end{bmatrix}=\hat{x}=(X^TX)^{-1}Xy
+$$~\\$$
+	||x||^2_2=x^Tx=|x|^2
+$$
+Minsta kvadratmetoden hittar $x$ som minimerar $|Ax-b|^2$
+$$
+	\arg\min_x|Ax-b|^2=(A^TA)^{-1}A^Tb
+$$~\\
+$$
+	\hat\beta=(X^tX)^{-1}X^Ty
+$$
+$$L(\hat\beta_0,\hat\beta_1)=|y-X\beta|^2+\lambda|\beta|$$
+Allt detta vill säga att $$
+	\begin{cases}
+		\hat\beta_0=\bar y-\hat\beta_1\bar x \\
+		\hat\beta_1=\frac{n\sum x_iy_i-\sum x_1\sum y_i}{n\sum x_i^2-(\sum x_i)^2}
+	\end{cases}
+$$
+\section{Förklaringsgrad}
+$$
+	R^2=\frac{\sum(\hat y_i-y_i)^2}{\sum(y_1-\bar y)^2}\in[0,1]
+$$
+$$
+	\text{Antaganden}:\begin{cases}
+		Y_i\sim\beta_0+\beta_1x_i+\varepsilon_i \\
+		\varepsilon\sim N(0,\sigma),\text{oberoende}
+	\end{cases}
+$$

@@ -1,0 +1,46 @@
+%-------------------------------------------------
+% Changes hyperlink formatting as well as the links in the table of contents
+%-------------------------------------------------
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black
+}
+
+
+%-------------------------------------------------
+% Reformats the Chapter title
+%-------------------------------------------------
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape\centering} % format
+{Lecture  \ \thechapter} % label
+{0.5ex} % sep
+{
+	\color[HTML]{0071C5}
+	\rule{\textwidth}{1pt}
+	\vspace{1ex}
+	\centering
+} % before-code
+
+
+%-------------------------------------------------
+% Defines the style of potential code blocks
+%-------------------------------------------------
+\lstset{
+	frame=tb,
+	language=C,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	frame=single,
+	breakatwhitespace=true,
+	tabsize=3
+}
