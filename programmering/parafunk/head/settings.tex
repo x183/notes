@@ -1,0 +1,70 @@
+% !TEX root =/main.tex
+%-------------------------------------------------
+% Changes hyperlink formatting as well as the links in the table of contents
+%-------------------------------------------------
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black
+}
+
+
+%-------------------------------------------------
+% Reformats the Chapter title
+%-------------------------------------------------
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape\centering} % format
+{Chapter no.  \ \thechapter} % label
+{0.5ex} % sep
+{
+	\color[HTML]{0071C5}
+	\rule{\textwidth}{1pt}
+	\vspace{1ex}
+	\centering
+} % before-code
+
+
+%-------------------------------------------------
+% Defines the style of potential code blocks
+%-------------------------------------------------
+\lstdefinestyle{ha}{
+	frame=tb,
+	language=C,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	frame=single,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\lstset{
+	frame=none,
+	xleftmargin=2pt,
+	stepnumber=1,
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\ttfamily\tiny\color[gray]{0.3},
+	belowcaptionskip=\bigskipamount,
+	captionpos=b,
+	escapeinside={*'}{'*},
+	language=erlang,
+	tabsize=2,
+	emphstyle={\bf},
+	commentstyle=\it,
+	stringstyle=\mdseries\rmfamily,
+	showspaces=false,
+	keywordstyle=\bfseries\rmfamily,
+	columns=flexible,
+	basicstyle=\small\sffamily,
+	showstringspaces=false,
+	morecomment=[l]\%,
+}

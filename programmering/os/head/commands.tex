@@ -1,0 +1,19 @@
+% !TEX root =/main.tex
+%-------------------------------------------------
+% Colors:
+%-------------------------------------------------
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+%-------------------------------------------------
+% List of custom commands:
+%-------------------------------------------------
+
+\newcommand{\includeAllLectures}[1]{
+	%\setcounter{fileCount}{#1}
+	\foreach \x in {1,...,#1} {
+			\include{lectures/\x}
+		}
+}
