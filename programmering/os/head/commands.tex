@@ -12,8 +12,19 @@
 %-------------------------------------------------
 
 \newcommand{\includeAllLectures}[1]{
-	%\setcounter{fileCount}{#1}
 	\foreach \x in {1,...,#1} {
 			\include{lectures/\x}
 		}
 }
+
+\newtcolorbox{snippet}[1]{center title,enhanced,colback=green!10!white,title={\Large #1},colframe=green!75!white,coltitle=black}
+
+\newtcolorbox{example}[1]{center title,enhanced,colback=blue!10!white,title={\Large #1},colframe=blue!75!black}
+
+% \newcommand{\codeSnippet}[1]{
+% 	\begin{example}{Code snippet \thecodeSnippets}
+% 		\label{code:\thecodeSnippets}
+% 		#1
+% 	\end{example}
+% 	\stepcounter{codeSnippets}
+% }
