@@ -1,0 +1,41 @@
+% !TEX root =/main.tex
+\chapter{Multithread Programming}
+
+\section{Threads (Introduction)}
+A computer with multiple cores is like a body with multiple brains; at the same time, multiple instructions can be executed by the cpu. These instruction can be from different processes, but we also want to be able to run different parts of the same process on several cores.
+
+When we talk about multithreading in programming, we talk about the operating system supporting having several program counters within the same program, this means we can execute several instructions in the same program at the same time ( if the operating system have more than one core), and / or execute the program in a non-linear fashion.
+
+One of the main reasons for creating threads within a program instead of creating new processes is that creating threads is a much simpler action for the operating systems, it takes significantly less time and resources.
+
+\subsection{Concurrency vs Parallelism}
+When we talk about executing code simultaneously we usually talk about either concurrent or parallel programs, the difference is that while a parallel program is running on different \textbf{cores} and are executing at the same time, a concurrent program is one that runs in what feels like the same time, they could execute on different cores, or they could be running on the same core, meaning they will \textbf{maybe} not execute at the same time but given enough time, both will progress.
+
+
+
+\section{Multithreading models}
+
+\subsection{User Threads and Kernel Threads}
+\textbf{User threads} are threads managed by the user, the operating system is not aware of these. Think Java threads or similar.\\
+\textbf{Kernel threads} are threads supported by the kernel.
+
+Kernel threads are useful e.g. when we have a program where some parts of the program which are taking a lot of time without really blocking other things we want to do, think of a process wanting to save a file, we still want to be able to continue running the process.
+
+User threads are useful when we have multiple threads but want more control over when they should execute.
+
+There are several different models for how we combine user threads and kernel threads.
+
+\subsection{Many-to-One}
+Many user threads running in one kernel thread.
+\subsection{One-to-one}
+One user thread running in one kernel thread.
+\subsection{Many-to-many}
+Allowing several user threads to be mapped to several kernel threads, look at ThreadFiber for Windows.
+
+
+
+
+\section{Implicit threading}
+Instead of the programmer managing threads explicitly, we can use pre-made constructions such as thread pools to speed up the assignment of threads to tasks and minimize the human errors of explicit thread management.
+
+\section{Threading issues}
