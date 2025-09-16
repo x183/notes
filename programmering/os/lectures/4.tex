@@ -1,0 +1,55 @@
+% !TEX root =/main.tex
+
+\chapter{Process scheduling}
+
+\section{Introduction to process scheduling}
+There's two different kinds of processes; CPU-bound and I/O bound.
+\subsection{CPU-bound}
+A cpu bound thread is a thread that is mainly using computing and not I/O devices, the main throttle is the speed of the processor not the access time of devices.
+
+\subsection{I/O bound}
+I/O bound threads are threads which perform a lot of I/O actions and therefore have to wait a lot inbetween when it can actually compute.
+
+\section{Batch / Interactive / Rts scheduling}
+
+\subsection{Batch}
+''business-world” applications, data analysis. Appropriate for non-preemptive.
+
+The most important metric is throughput.
+
+\subsubsection{Comparison of different algorithms}
+\begin{tabular}{|c|c|c|}
+	\hline
+	Algorithm                                 & +                               & -                                                   \\\hline
+	First-Come/First-Serve (non-preemptive)   & Easy, fair                      & Possibly inefficient (esp. for I/O bound processes) \\\hline
+	Shortest Job First (non-preemptive)       & Optimal for turnaround          & Starvation + need to know runtime                   \\\hline
+	Shortest Remaining Time Next (preemptive) & New short jobs get good service & Starvation + need to know runtime                   \\\hline
+\end{tabular}
+
+
+\subsection{Interactive}
+It is not known in advance what the system is  going to do. Many users that need responsiveness, requiring preemptive scheduling.
+
+Most important metric is response time.
+
+\subsubsection{Comparison of different algorithms}
+\begin{tabular}{|c|c|c|}
+	\hline
+	Algorithm           & +                                  & -                                                \\\hline
+	Round-robin         & Easy to implement                  & Easy to get too long or short times per process. \\\hline
+	Priority scheduling & Can maximize the throughput easily & Harder to implement                              \\\hline
+	Lottery scheduling  & High control over resource use     &                                                  \\
+\end{tabular}
+
+\subsection{Real-time}
+We will not discuss this during the course, but if these do not run instantly, there is no point in running it. Think car control systems.
+
+for short-lived, short-cycle processes with hard/soft deadlines.
+
+Most important metric is meeting deadlines.
+
+\section{Processes vs. Threads scheduling}
+
+\section{Multiprocessor hardware}
+
+\section{Multiprocessor scheduling}
