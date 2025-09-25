@@ -1,0 +1,46 @@
+% !TEX root =/main.tex
+\chapter{Memory management}
+\section{Background and basic hardware}
+There exist a memory hierarchy inside of our computer; the ones very close to the CPU, i.e. registers, main memory, caches, can be accessed directly by the CPU, the ones further away needs to be accessed through different types of hardware and therefore often take more time.
+
+Registers and caches are fastest to access data from, usually within one cycle, while main memory take many cycles, and all other media take a lot longer.
+
+While there is no actual need to copy things from slow devices to faster ones, like copying files you access from the disk to main memory, or use registers for computations, is not necessary, the amount of time reduction is so impactful that in practice this is seen as necessary.
+
+\section{Base and limit register}
+Since all processes needs access to their own memory and will probably use it heavily, it is not feasible to wake up the operating system and chech whether every single process is allowed to write or read from/to memory each time this is done, we need a way to keep track of where each process is allowed to read and write accessible without the OS.
+
+For each process, the CPU keeps track of the first address every process are allowed to access as well as the number of addresses they can access. This data is stored in registers and loaded when context switching.
+
+With these registers, it is easy for the hardware to for every memory access check whether the address requested is within the range reserved for the process, if it is inbetween it gets access, otherwise the OS is called upon.
+
+\section{Logical vs Physical addresses}
+Since processes often use hard-coded memory addresses in memory to read and store data, the operating system translates the addresses the process is using into addresses in memory, the address itself might be vastly different.
+
+Using logical instead of physical addresses also help when swapping, since it doesn't matter if the data is swapped into a different memory range.
+
+\subsection{Memory management Unit - Relocation Register}
+One version of this is for example if a process uses addresses 0 - 1000, we add a number, maybe \lstinline{1000 * ps_id} we lets all processes use the same virtual addresses but different logical addresses.
+
+\section{Swapping}
+Swapping means moving data back from main memory to store on disk. Usually the main memory is quite small, but the amount of logical addresses in the main memory is vastly larger, and if we keep loading more and more data into main memory we are allowed to do this and the OS is able to handle this. This is because as memory is stopped being accessed, the OS moves that data from main memory into disk until it is later needed.
+
+\subsection{Which processes can we swap?}
+It is generally a bad idea to swap the memory of processes in the ready queue, since they could soon be called upon, forcing us to move the data back. Instead swapping the data of processes waiting on I/O, preferrably processes waiting for slower I/O and where the result of the I/O process can be buffered by the OS.
+
+\section{Memory allocation}
+Memory contains the OS as well ass the user's processes, we need a way to allocate memory efficiently, preferrably also disallowing processes from writing and reading to the OS memory as well as maybe disallowing reading from certain parts of their own memory.
+
+\subsection{Contiguous allocation}
+We allocate each process directly after each other, to translate the physical addresses we just add the offset between the start of logical and physical addresses.
+Issues with this method is that every time a process terminate or swap, we create a hole, OS need to keep track of holes for placement of processes later.
+
+Contiguous allocation may lead to external fragmentation, where the amount of memory not used is enough for a process, but there not one segment of memory large enough to fit a process. It is possible to defragment the memory but this is not really done for main memory since this takes a lot of time and while doing that it is impossible to use the memory, all processes need to pause execution.
+
+\subsection{Segmentation}
+Instead of each process having a block of memory, leading to holes when removed, we can instead allocate different segments in different memory slots. We instead refer to the memory as which segment to access and the position within the segment we want to access.
+
+\subsection{Paging}
+We define the logical memory in terms of pages and the physical memory in terms of frames. All pages and frames are the same size, and each time we load a page, we \textbf{at least} need to load 4 frames. To keep track of the pages we have a page table in each process.
+
+For the hardware to translate a logical address into a physical, we have a page size which is a power of 2, meaning the lowest n bits define the offset within a frame, and all the other bits are used to define the page number.
