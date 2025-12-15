@@ -1,0 +1,29 @@
+% !TEX root =/main.tex
+\chapter{Virtual memory}
+\section{Virtual memory in a nutshell}
+\section{Demand paging}
+Technically we only need a page in memory during the time we access it. By only loading pages into memory when needed we can save time.
+
+To do this we need new functionality in the mmu.
+
+If we try to access a page and it is in memory we can just access it, if the page is not in memory we call upon the operating system
+
+\subsection{Valid-Invalid bit}
+To understand whether the needed page is in memory, we add extra information to the page table, one of them is the valid-invalid bit which represents whether a page is in main memory or in swap.
+
+
+\section{Copy-on-Write}
+When a process spawn another process, both processes copy the page table, and mark all pages as read only. By doing this we only need to allocate new pages as one or both of the processes tries to write to that specific page.
+
+\section{Page replacement}
+How do I efficiently load the pages I need? There's different algorithms that help define which pages to load/unload and when.
+
+\subsection{FIFO}
+If all frames are used, free the first one loaded into memory. This suffers from an anomaly where sometimes adding more pages leads to more page faults.
+
+\subsection{Optimal algorithm - Least recently used}
+Optimally we want to replace the page that will not be used for the longest amount of time, but how? Knowing for certain can be very hard since it is not yet possible to know the future.
+
+Since we cannot know the future, a good prediction can be to look at the past to predict the future. Logically the page that has been unused for the longest amount of time will likely be the one not used for the longest amount of time in the future.
+
+This is the best known algorithm so far.

@@ -44,3 +44,5 @@ Instead of each process having a block of memory, leading to holes when removed,
 We define the logical memory in terms of pages and the physical memory in terms of frames. All pages and frames are the same size, and each time we load a page, we \textbf{at least} need to load 4 frames. To keep track of the pages we have a page table in each process.
 
 For the hardware to translate a logical address into a physical, we have a page size which is a power of 2, meaning the lowest n bits define the offset within a frame, and all the other bits are used to define the page number.
+
+When a page is accessed by a process, the hardware looks for it in the page table, if it is not there, an interrupt is created and the operating system loads it.
