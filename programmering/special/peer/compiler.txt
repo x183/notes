@@ -1,0 +1,39 @@
+Introduction:
+   Several facts are stated without source, I assume that the source is the book mentioned, but would be nice to see.
+
+
+3.1.2 Optimiser
+   One of the sources are missing: Lattner notes that ... [?]
+   It's a bit unclear what generic transformation logic is
+   
+3.1.3
+   Very minor, but e.g. sounds unprofessional in my opinion
+   
+4.1
+   Isn't Copy Propagation just a special case of DCE?
+
+4.2
+   Reading about the egg framework, it would be nice to have a reflection of its impact on the compiler's efficiency. If it affects the performance of the compiler, I don't know.
+
+
+ 
+7.1
+   It would be interesting to see more of a reflection regarding energy efficiency as well
+
+7.2
+   "If the order is unlucky, the opportunity may never appear." - What opportunity?
+   
+
+General comments
+   Some abbreviations are explained several times (see IR)
+   I get the feeling one person used italics to mark important words/phrases and the other person used bolding
+   It would be nice to have the explanation of optimization flags earlier, the earlier chapter mentions things such as -O2, and -Oz but we have to read until the second last chapter before its meaning is explained.
+   Different spellings of words in rare cases (ise vs ize)
+   It's a bit strange that subsubsections are used in the first section, but not in later sections.
+
+   Some concepts talked about have no explanation, these are the ones I think readers might have trouble understanding:
+      SIMD
+      Hot Loop
+      Scalar Loops
+      Poison values
+Overall the report was very easy to follow and of a high standard. ;-)
