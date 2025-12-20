@@ -1,0 +1,42 @@
+General feedback
+   There are some empty sections, which is to be avoided
+   Some grammatical errors, try using a spellchecking tool such as writeful (built into overleaf)
+   The chapter title is a bit strange, I feel the last word has gone missing?
+   It's good to introduce something before talking about it, maybe introduce JMH earlier, even if the full explanation of it remains we don't know what it stands for in the first two sections.
+   The chapter covers many aspects of JMH and micro-benchmarking, which makes it quite ambitious for 15–25 pages. You might consider narrowing the focus to the most important points to improve clarity and depth.
+
+1.1
+   I'm a bit confused, does the JVM compile a program while executing it?
+   What does heating the system mean? Is it performing some kind of menial tasks?
+   
+1.2
+   Accidentally citing the same source twice in a row
+
+2.1.1
+   It's nice to write the author's name instead of only the number of a source when mentioning a source.
+
+2.2.2
+   I find this section quite hard to follow.
+
+3.4 Unmanaged Languages
+   Does this mean that benchmarking of sequential code is easier in unmanaged languages?
+
+
+4.2.1
+   I think this is the second time Blackholes are explained
+
+5.1
+   I am having trouble understanding the contents of this section
+
+5.2.1
+   There are 2 sections 5.2.1
+
+
+6.3
+   It would be nice if the thundering herd issue was explained higher up in the section called Thundering Herd, instead of here
+   
+6.4
+   I am not entirelly sure, but isn't NET also neither compiled nor interpreted, similar to Java?
+   
+6.5
+   I don't fully understand the first two sentences.
