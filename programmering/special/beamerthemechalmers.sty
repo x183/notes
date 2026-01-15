@@ -1,0 +1,68 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\RequirePackage{adjustbox}
+\RequirePackage[scaled]{helvet}
+\RequirePackage{graphicx}
+\RequirePackage{grffile}
+\RequirePackage{xcolor}
+\RequirePackage{xstring}
+%\usepackage[scaled]{uarial}
+
+\newif\if@simpleLogo
+\@simpleLogofalse
+\DeclareOption{simple_logo}{\@simpleLogotrue}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sub Themes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{grey_light}{HTML}{cccccc}
+\definecolor{grey_dark}{HTML}{333333}
+\definecolor{red_dark}{HTML}{be0208}
+\definecolor{red_light}{HTML}{FCB5B6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sub Themes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\useinnertheme{chalmers}
+\useoutertheme{chalmers}
+\usecolortheme{chalmers}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{sections/subsections in toc}[round]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Toc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% title page
+\setbeamerfont{title}{family=\sffamily, series=\bfseries, size=\huge}
+\setbeamerfont{subtitle}{family=\sffamily, series=\mdseries, size=\large}
+\setbeamerfont{author}{family=\sffamily, series=\mdseries, size=\normalsize}
+
+% frame
+\setbeamerfont{frametitle}{family=\sffamily, series=\bfseries, size=\normalsize}
+\setbeamerfont{framesubtitle}{family=\sffamily, series=\mdseries, size=\small}
+
+% block
+\setbeamerfont{block title}{family=\sffamily, series=\bfseries, size=\normalsize}
+
+%structure
+\setbeamerfont{structure}{family=\sffamily, series=\bfseries, size=\normalsize}
+
+\mode<all>

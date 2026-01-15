@@ -1,0 +1,42 @@
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{chalmers}[1][]
+{%
+	\nointerlineskip
+	\begin{beamercolorbox}[wd=\paperwidth,ht=5ex]{frametitle}%
+		\hspace{1em}%
+		\begin{minipage}[c][5ex][b]{0.6\textwidth}%
+			\topskip0pt\vspace*{\fill}%
+			\strut\ifx\insertframesubtitle\@empty%
+				{\insertframetitle\vspace*{0.1em}}
+				\else%
+				{\usebeamerfont{frametitle}\insertframetitle\\
+					\usebeamerfont{framesubtitle}\insertframesubtitle}%
+			\fi \strut%
+		\end{minipage}%
+		\hfill
+		\begin{minipage}[c][5ex][t]{0.5\textwidth}%
+			\topskip0pt\vspace*{\fill}%
+			\hfill \includegraphics[width=\textwidth]{figures/ichalmers_gu.png}%
+			\vspace*{\fill}
+		\end{minipage}%
+		\hspace*{0.5em}%
+		\vfill
+	\end{beamercolorbox}
+}
+
+\defbeamertemplate*{footline}{chalmers}[1][]
+{%
+	\nointerlineskip
+	\hbox{%
+		\begin{beamercolorbox}[wd=.70\paperwidth,ht=7.25ex,left,leftskip=2ex]{date in head/foot}%
+			\vbox to7.25ex{\vfil\hbox{\usebeamerfont{title in head/foot}\insertshortdate{}}\vfil}%
+		\end{beamercolorbox}%
+		\hfill%
+		\begin{beamercolorbox}[wd=.30\paperwidth,ht=7.25ex,right,rightskip=2ex]{date in head/foot}%
+			\hfill\vbox to7.25ex{\vfil\hbox{\insertframenumber{} / \inserttotalframenumber}\vfil}%
+		\end{beamercolorbox}}%
+}
+
+\mode<all>

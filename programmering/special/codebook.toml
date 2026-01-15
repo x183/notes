@@ -1,0 +1,17 @@
+dictionaries = ["en_gb"]
+words = [
+    "antipattern",
+    "antipatterns",
+    "asynchrosity",
+    "backupping",
+    "colframe",
+    "distributedness",
+    "ifthenelse",
+    "mak",
+    "orchestrator",
+    "orchestrators",
+    "parallelisable",
+    "parallelising",
+    "patt",
+    "shortpolling",
+]

@@ -1,0 +1,100 @@
+\documentclass[presentation]{beamer}
+
+\usepackage{color}
+\usepackage[many]{tcolorbox}
+\title{Performance Patterns and Anti-patterns}
+\author{Oscar Palm}
+\institute{CSE}
+\date{January, 2025}
+\usetheme{chalmers}
+\newcommand{\newframe}[2]{\begin{frame}{#1}\section{#1}#2\end{frame}}
+\newcommand{\rubric}[1]{\textbf{\large #1}}
+\newtcolorbox{exempel}{enhanced,colback=gray!10!white,colframe=gray!60!black}
+\begin{document}
+\frame{\titlepage}
+
+
+\newframe{Overview}{
+	\begin{center}
+		\includegraphics[width=\textwidth]{presentation/figures/overview.png}
+	\end{center}
+}
+
+\newframe{Communication}{
+	\begin{minipage}{0.55\linewidth}
+		\rubric{Network Communication}
+		\begin{itemize}
+			\item Each request important
+		\end{itemize}
+		\rubric{Internal Communication}
+		\begin{itemize}
+			\item Computation of requests important
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.4\linewidth}
+		\includegraphics[width=1.1\textwidth]{presentation/figures/communication.png}
+	\end{minipage}
+}
+
+\newframe{Communication - Network Communication}{
+	\only<1>{
+		\rubric{Empty Semi Truck}\\
+		\begin{minipage}{.45\textwidth}
+		\includegraphics[width=\textwidth]{presentation/figures/semitruck_prob.png}
+		\end{minipage}
+		\begin{minipage}{.45\textwidth}
+		\includegraphics[width=1.1\textwidth]{presentation/figures/semitruck_sol.png}
+		\end{minipage}
+	}
+	\only<2>{\rubric{Asynchronous Request-Reply}
+	\includegraphics[width=1\textwidth]{presentation/figures/async-request.png}}
+}
+
+\newframe{Communication - Internal Communication}{
+	\rubric{Choreography}
+	\includegraphics[width=1\textwidth]{presentation/figures/choreography.png}
+}
+
+\newframe{Data Handling}{
+	\includegraphics[height=\textheight]{presentation/figures/data.png}
+}
+
+\newframe{Data handling - Caching}{
+	\rubric{Cache-aside}
+	\includegraphics[width=1\textwidth]{presentation/figures/cache.png}
+}
+
+\newframe{Parallel Execution}{
+	\rubric{Competing Consumers}
+	\includegraphics[width=1\textwidth]{presentation/figures/competing-consumers.png}
+}
+
+\newframe{Orchestration}{
+	\rubric{Chaotic Session Management}
+
+	\begin{minipage}{.45\textwidth}
+	\includegraphics[width=1.1\textwidth]{presentation/figures/chaotic_problem.jpg}
+	\end{minipage}
+	\begin{minipage}{.45\textwidth}
+	\includegraphics[width=1.1\textwidth]{presentation/figures/chaotic_solution.jpg}
+	\end{minipage}
+}
+
+\newframe{Execution Ordering}{
+	\rubric{Priority Queue}
+	\begin{itemize}
+	\item Single queue for all consumers
+	\only<2>{\item Separate queues by priority}
+	\end{itemize}
+	\only<1>{\includegraphics[width=1\textwidth]{presentation/figures/priority_single.png}}
+	\only<2>{\includegraphics[width=1\textwidth]{presentation/figures/priority_several.png}}
+	}
+
+\newframe{Conclusion}{
+\begin{itemize}
+\item Usually not hard to implement
+\item Patterns not always best solution
+\end{itemize}
+}
+
+\end{document}

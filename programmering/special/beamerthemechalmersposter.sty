@@ -1,0 +1,227 @@
+\ProvidesPackage{beamerthemechalmersposter}
+
+\mode<presentation>
+
+\newcommand\contactauthor[1]{\newcommand{\insertcontactauthor}{#1}}
+\newcommand\authormail[1]{\newcommand{\insertauthormail}{#1}}
+
+\newif\if@simpleLogo
+\@simpleLogofalse
+\DeclareOption{simple_logo}{\@simpleLogotrue}
+\ProcessOptions
+%
+% Colors
+%
+
+\definecolor{grey_light}{HTML}{cccccc}
+\definecolor{grey_dark}{HTML}{333333}
+\definecolor{red_dark}{HTML}{be0208}
+\definecolor{red_light}{HTML}{FCB5B6}
+\definecolor{none}{HTML}{FF0000}
+%
+% Header
+%
+
+\setbeamercolor{headline}{fg = none, bg = black}
+
+%title
+\setbeamercolor{titleline}{fg = none, bg = black}
+\setbeamercolor{title in headline}{fg = white}
+\setbeamerfont{title in headline}{series = \bfseries, size = \LARGE}
+%title
+\setbeamercolor{titleline}{fg = none, bg = black}
+\setbeamercolor{subtitle in headline}{fg = white}
+\setbeamerfont{subtitle in headline}{series = \bfseries, size = \large}
+% author
+\setbeamercolor{authorline}{fg = none, bg = white}
+\setbeamercolor{author in headline}{fg = black}
+\setbeamerfont{author in headline}{size = \normalsize, series = \mdseries}
+% affiliation
+\setbeamercolor{institute in headline}{fg = black}
+\setbeamerfont{institute in headline}{size = \normalsize, series = \bfseries}
+
+
+%
+% Footer
+%
+\setbeamercolor{separation line}{bg = black}
+\setbeamercolor{footline}{fg = none, bg = none}
+\setbeamerfont{footline}{size = \large, series = \bf}
+
+\setbeamercolor{framesubtitle}{fg = none, bg = grey_dark}
+\setbeamercolor{author in head/foot}{fg=white, bg = black}
+\setbeamercolor{title in head/foot}{fg = none, bg = none}
+
+%
+% Block appearance
+%
+
+\setbeamercolor*{normal text}{fg = black, bg = white}
+\setbeamercolor*{block body}{fg = black, bg = white}
+\setbeamercolor*{block title}{fg = white, bg = black}
+\setbeamerfont{block title}{size = \large, series = \bf}
+\setbeamercolor{upper separation line head}{fg = none, bg = black}
+\setbeamercolor{lower separation line head}{fg = none, bg = white}
+
+\setbeamercolor*{block body alerted}{fg = black, bg = red_light }
+\setbeamercolor*{block title alerted}{fg = white,  bg = red_dark}
+
+%
+% Example
+%
+
+\setbeamercolor*{example body}{fg = none,bg = none}
+\setbeamercolor*{example text}{fg = none, bg = none}
+\setbeamercolor*{example title}{bg = none, fg = none}
+
+\setbeamercolor{alerted text}{fg = black}
+\setbeamerfont{alerted text}{series = \bfseries}
+\setbeamercolor{structure}{fg = black}
+\setbeamerfont{structure}{series = \bfseries}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamercolor{itemize item}{fg = black, bg = white}
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Block environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{block begin}{
+\vskip.75ex
+\begin{beamercolorbox}[rounded = false, shadow = false, leftskip = 1cm, colsep* =.75ex]%
+	{block title}%
+	\rule{0pt}{10pt}
+	\usebeamerfont*{block title}\insertblocktitle
+	\rule{0pt}{20pt}
+\end{beamercolorbox}%
+{\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body}%
+\begin{beamercolorbox}[rounded = false, shadow = false, colsep* = .75ex, sep = .75ex, vmode]
+	{block body}%
+	\ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+	}
+	\setbeamertemplate{block end}{
+\end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alerted block environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{block alerted begin}{
+\vskip.75ex
+\begin{beamercolorbox}[rounded = false, shadow = false, leftskip = 1cm, colsep* =.75ex]%
+	{block title alerted}%
+	\rule{0pt}{10pt}
+	\usebeamerfont*{block title alerted}\insertblocktitle
+	\rule{0pt}{10pt}
+\end{beamercolorbox}%
+{\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body alerted}%
+\begin{beamercolorbox}[rounded = false, shadow = false, colsep* = .75ex, sep = .75ex, vmode]
+{block body alerted}%
+\ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{headline}{
+	\leavevmode
+
+	%%%%%%% title line
+	\begin{beamercolorbox}[wd=\paperwidth]{titleline}
+		\begin{columns}[T]
+			\begin{column}{10pt}
+			\end{column}
+			\begin{column}{0.65\paperwidth}
+				\rule{0pt}{1cm}
+				\vskip1cm
+				\usebeamercolor{title in headline}{%
+					\usebeamerfont{title in headline}{%
+						\linespread{1.5}
+						\color{fg}\inserttitle%
+						\linespread{1.0}
+					}\\[1ex]%
+				}%
+				\usebeamercolor{subtitle in headline}{%
+					\usebeamerfont{subtitle in headline}{%
+						\linespread{1.5}
+						\color{fg}\insertsubtitle%
+						\linespread{1.0}
+					}\\[1ex]%
+				}
+				\vskip1cm
+			\end{column}
+			\begin{column}{.025\paperwidth}
+			\end{column}
+			\begin{column}{.275\paperwidth}
+				\rule{0pt}{1.5cm}
+				\vspace{-1cm}
+				\begin{center}
+					\if@simpleLogo
+						\vfill
+						\includegraphics[width=0.7\textwidth]{figures/logo_w}
+						\vfill
+					\else
+						\includegraphics[width=\textwidth]{figures/logo_a_w}
+					\fi%
+					\rule{0pt}{2cm}
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{beamercolorbox}
+
+	\begin{beamercolorbox}[wd=\paperwidth]{authorline}
+		\begin{columns}[T]
+			\begin{column}{.05\paperwidth}
+			\end{column}
+			\begin{column}{.8\paperwidth}
+				\vskip3cm
+				\raggedright
+				%%%%%%%%% author
+				\usebeamerfont{author in headline}{%
+					\usebeamercolor{author in headline}{
+						\color{fg}\insertauthor%
+					}\\[1ex]%
+				}
+				%%%%%%%%% institute
+				\usebeamerfont{institute in headline}{%
+					\usebeamercolor{institute in headline}{%
+						\color{fg}\insertinstitute%
+					}\\[1ex]%
+				}
+				\vskip1ex
+			\end{column}
+			\begin{column}{.375\paperwidth}
+			\end{column}
+		\end{columns}
+	\end{beamercolorbox}
+
+
+	\begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+		\rule{0pt}{2cm}
+	\end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Footline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{footline}{
+	\begin{beamercolorbox}[ht=2.2ex, leftskip=1cm, rightskip=1cm]{author in head/foot}%
+		\usebeamerfont{footline}
+		\insertcontactauthor
+		\hfill
+		\href{mailto:\insertauthormail}{\insertauthormail}
+		\vspace{0.1ex}
+	\end{beamercolorbox}
+}
+
+
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]{}% Number float-like environments
+
+\mode<all>

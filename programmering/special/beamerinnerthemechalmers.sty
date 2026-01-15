@@ -1,0 +1,77 @@
+\mode<presentation>
+
+\setbeamertemplate{background}{
+}
+
+% Title page
+\defbeamertemplate*{title page}{chalmers}[1][]
+{
+	\vfill
+	\vspace{1.5em}
+	\begin{minipage}[c][8.5cm][c]{\textwidth}%
+		\usebeamerfont{title}\inserttitle\par%
+		\vspace{1.0em}\usebeamerfont{subtitle}\insertsubtitle%
+		\vfill
+		\begin{minipage}[t]{\textwidth}%
+			\begin{minipage}[b]{0.4\textwidth}%
+				\usebeamerfont{author}\insertauthor \\
+				\usebeamerfont{institute}\insertinstitute\\
+			\end{minipage}%
+			\hfill%
+			\begin{minipage}[b]{%
+					\if@simpleLogo
+						0.6\textwidth%
+					\else
+						0.6\textwidth%
+					\fi}%
+				\vfill
+				\includegraphics[width=.6\textwidth]{figures/logo_gu.png}~
+				\includegraphics[width=.45\textwidth]{%
+					\if@simpleLogo
+						figures/logo%
+					\else
+						figures/logo_a%
+					\fi}%
+			\end{minipage}%
+		\end{minipage}
+	\end{minipage}%
+	\thispagestyle{empty}
+	\vfill
+}
+
+\defbeamertemplate*{block alerted begin}{chalmers}[1][]
+{
+	\par\vskip\medskipamount%
+	\IfStrEq{\insertblocktitle}{}{}{
+		\begin{beamercolorbox}[colsep*=.75ex]{block title alerted}
+			\usebeamerfont*{block title alerted}\insertblocktitle%
+		\end{beamercolorbox}%
+	}%
+	{\parskip0pt\par}%
+	\ifbeamercolorempty[bg]{block title alerted}
+	{}
+	{\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+	\usebeamerfont{block body}%
+	\begin{beamercolorbox}[colsep*=.75ex,vmode]{block body alerted}%
+	\ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\defbeamertemplate*{theorem begin}{chalmers}[1][]
+{%
+	\begin{beamercolorbox}[colsep*=.75ex]{theorem title}
+		\usebeamerfont*{block title alerted}\inserttheoremheadfont\inserttheoremname%
+		\ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+	\end{beamercolorbox}%
+	\parskip0pt\par%
+	{\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+	\usebeamerfont{block body}%
+	\begin{beamercolorbox}[colsep*=.75ex,vmode]{theorem body}\vbox{}%
+		}%
+
+		\defbeamertemplate*{theorem end}{chalmers}[1][]
+		{%
+	\end{beamercolorbox}
+}%
+
+\mode
+<all>
